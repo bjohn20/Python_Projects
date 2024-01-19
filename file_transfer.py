@@ -72,29 +72,34 @@ class ParentWindow(Frame):
         destination = self.destination_dir.get()
         # Gets a list of files in the source directory
         source_files = os.listdir(source)
-        # Gets the time of last modification of the specified path since the epoch
-        modification_time = os.path.getmtime(source)
-        # converts the time from seconds since epoch to local time
-        local_time = time.ctime(modification_time)
-        # Get the exact current moment in time right now
-        current_time = datetime.datetime.now()
-        # Converting modification_time to a datetime object
-        mod_modificaton_time = datetime.datetime.fromtimestamp(modification_time)
-        # subtracting the modification time from the current time
-        time_diff = current_time - mod_modificaton_time
-        # Printing time diff
-        print(time_diff)
+        
         # Get 24 hours datetime object
         twenty_four_hours = timedelta(days=1)
-        # Checking if results of that deduction is less than 24 hours
-        if time_diff < twenty_four_hours:
-            # Runs through each file in the source directory
-            for i in source_files:
+        # Runs through each file in the source directory
+        for i in source_files:
+            # Joined directory with file path names
+            file_path = os.path.join(source, i)
+            # Gets the time of last modification of the specified path since the epoch
+            modification_time = os.path.getmtime(file_path)
+            # converts the time from seconds since epoch to local time
+            local_time = time.ctime(modification_time)
+            # Get the exact current moment in time right now
+            current_time = datetime.datetime.now()
+            # Converting modification_time to a datetime object
+            mod_modificaton_time = datetime.datetime.fromtimestamp(modification_time)
+            # subtracting the modification time from the current time
+            time_diff = current_time - mod_modificaton_time
+            # Printing time diff
+            print(time_diff)
+            # Checking if results of that deduction is less than 24 hours
+            if time_diff > twenty_four_hours:
                 # moves each file from the source to the destination
                 shutil.move(source + '/' + i, destination)
                 print(i + ' was successfully transferred')
                 print("Last modification time:", local_time)
-            
+                    
+                
+    
 
         
 
@@ -102,6 +107,8 @@ class ParentWindow(Frame):
         # root is the main GUI window, the Tkinter destroy method
         # tells python to terminate root.mainloop and all widgets inside the GUI window
         root.destroy()
+
+    
 
     
     
