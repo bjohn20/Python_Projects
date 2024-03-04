@@ -92,7 +92,7 @@ class ParentWindow(Frame):
             # Printing time diff
             print(time_diff)
             # Checking if results of that deduction is less than 24 hours
-            if time_diff > twenty_four_hours:
+            if time_diff < twenty_four_hours:
                 # moves each file from the source to the destination
                 shutil.move(source + '/' + i, destination)
                 print(i + ' was successfully transferred')
