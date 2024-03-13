@@ -4,7 +4,8 @@ These are basic projects written in Python. They use various modules such as tki
 
 # Projects:
 
-\*[Phonebook](https://github.com/bjohn20/Python_Projects/tree/main/phonebook_app) \*[Check Files Gui](https://github.com/bjohn20/Python_Projects/blob/main/file_transfer.py)
+- [Phonebook](https://github.com/bjohn20/Python_Projects/tree/main/phonebook_app)
+- [Check Files Gui](https://github.com/bjohn20/Python_Projects/blob/main/file_transfer.py)
 
 ## Phone book
 
