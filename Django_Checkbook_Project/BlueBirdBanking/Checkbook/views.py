@@ -52,8 +52,9 @@ def transaction(request):
     # Checks if request method is POST
     if request.method == 'POST':
         if form.is_valid(): # Check to see if the submitted form is valid and if som saves the form
+            pk = request.POST['account'] # Retrieve which account the transaction was for
             form.save() # Saves the transaction form
-            return redirect('index') # Redirects the user to the home page after form submission
+            return balance(request, pk) # Renders balance of the accounts Balance Sheet
     # Pass content to the template in a dictionary
     content = {'form': form}
     # Adds content of form to page
